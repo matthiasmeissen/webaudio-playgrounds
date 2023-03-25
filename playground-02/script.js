@@ -1,36 +1,48 @@
 const section = document.querySelector('section');
-const freqControl = document.querySelector('input.freq');
+const playButton = document.querySelector('button');
+const stepContainer = document.querySelector('.steps');
 
-const audioContext = new AudioContext();
-let soundDsp = null;
+const context = new AudioContext();
 
-const createSound = async function () {
-    let plugin = new Faustsound(audioContext, '.')
-    plugin.load().then(node => {
-        soundDsp = node;
-        soundDsp.connect(audioContext.destination);
-    })
+const tempo = 120;
+const stepsPerBeat = 4;
+const numSteps = 16;
+
+const sequence = [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0];
+
+let currentStep = 0;
+
+
+const play = () => {
+    currentStep = 0;
+    setInterval(() => {
+        if (sequence[currentStep]) {
+            console.log(sequence[currentStep])
+        }
+        currentStep = (currentStep + 1) % numSteps;
+    }, (60 / tempo) / stepsPerBeat * 1000);
 }
 
-createSound()
+playButton.addEventListener('click', play);
 
-let color = 0;
 
-freqControl.addEventListener('input', function () {
-    if (audioContext.state === 'suspended') {
-        audioContext.resume();
+const createStep = (active) => {
+    const step = document.createElement('div');
+    step.classList.add('step');
+    if (active) {
+        step.classList.add('active');
     }
+    stepContainer.appendChild(step);
 
-    soundDsp.setParamValue('/sound/Frequency', freqControl.value);
-    color = freqControl.value / 8000;
-    section.style.backgroundColor = `hsl(0deg, 0%, ${color * 100}%)`
-})
+    step.addEventListener('click', () => {
+        if (step.classList.contains('active')) {
+            step.classList.remove('active');
+        } else {
+            step.classList.add('active');
+        }
+    });
+}
 
-freqControl.addEventListener('mousedown', function () {
-    soundDsp.setParamValue('/sound/Gain', 0.1);
-})
-
-freqControl.addEventListener('mouseup', function () {
-    soundDsp.setParamValue('/sound/Gain', 0);
-    section.style.backgroundColor = `hsl(0deg, 0%, 100%)`
+sequence.forEach((index) => {
+    createStep(index);
 })

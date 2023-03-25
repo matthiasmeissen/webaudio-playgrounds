@@ -16,4 +16,26 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 32px;
 }
+
+.steps {
+    display: flex;
+    gap: 12px;
+}
+
+.step {
+    width: 48px;
+    height: 48px;
+    border: 1px solid hsl(0, 0%, 0%);
+    border-radius: 8px;
+}
+
+.step.active {
+    background-color: hsl(0, 0%, 0%);
+}
+
+.step:hover {
+    background-color: hsl(0, 0%, 80%);
+}
+
