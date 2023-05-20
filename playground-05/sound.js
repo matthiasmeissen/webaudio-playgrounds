@@ -9,9 +9,9 @@ async function setup() {
     const outputNode = context.createGain();
     outputNode.connect(context.destination);
 
+    // Add a button to start the audio context
     let button = document.createElement("button");
     button.innerText = "Click to start audio";
-
     button.style.position = "fixed";
     button.style.left = "20px";
     button.style.bottom = "20px";
@@ -73,23 +73,21 @@ async function setup() {
         return;
     }
 
-    // (Optional) Load the samples
-    if (dependencies.length)
-        await device.loadDataBufferDependencies(dependencies);
-
     // Connect the device to the web audio graph
     device.node.connect(outputNode);
 
     // (Optional) Connect MIDI inputs
-    makeMIDIKeyboard(device);
+    //makeMIDIKeyboard(device);
+
+    // (Optional) Create note events with key press
+    makeNoteEvents(device);
+
+    // (Optional) Track mouse position and change parameters
+    useMousePosition(device);
 
     document.body.onclick = () => {
         context.resume();
     }
-
-    // Skip if you're not using guardrails.js
-    if (typeof guardrails === "function")
-        guardrails();
 }
 
 function loadRNBOScript(version) {
@@ -158,5 +156,68 @@ function makeMIDIKeyboard(device) {
         noteContainer.appendChild(key);
     });
 }
+
+// Create Note Events with Key Press
+function makeNoteEvents(device) {
+    if (device.numMIDIInputPorts === 0) return;
+
+    const midiChannel = 0;
+    const midiPort = 0;
+
+    const midiNotes = [
+        { key: "a", note: 49 },
+        { key: "s", note: 52 },
+        { key: "d", note: 56 },
+        { key: "f", note: 63 }
+    ]
+
+    midiNotes.forEach(({ key, note }) => {
+        document.addEventListener("keydown", (event) => {
+            const keyName = event.key;
+            if (keyName === key) {
+                const noteOnMessage = [
+                    144 + midiChannel, // Code for a note on: 10010000 & midi channel (0-15)
+                    note, // MIDI Note
+                    100 // MIDI Velocity
+                ];
+                let noteOnEvent = new RNBO.MIDIEvent(device.context.currentTime * 1000, midiPort, noteOnMessage);
+                device.scheduleEvent(noteOnEvent);
+            }
+        });
+
+        document.addEventListener("keyup", (event) => {
+            const keyName = event.key;
+            if (keyName === key) {
+                const noteOffMessage = [
+                    128 + midiChannel, // Code for a note off: 10000000 & midi channel (0-15)
+                    note, // MIDI Note
+                    0 // MIDI Velocity
+                ];
+                let noteOffEvent = new RNBO.MIDIEvent(device.context.currentTime * 1000, midiPort, noteOffMessage);
+                device.scheduleEvent(noteOffEvent);
+            }
+        });
+    });
+}
+
+// Track Mouse Position and change parameters
+function useMousePosition(device) {
+    const mousePosition = { x: 0, y: 0 };
+    document.addEventListener("mousemove", (event) => {
+        mousePosition.x = event.clientX / window.innerWidth;
+        mousePosition.y = event.clientY / window.innerHeight;
+
+        changeParameter('cutoff', mousePosition.x * 8000);
+        changeParameter('overblow', mousePosition.x * 2);
+        changeParameter('harmonics', mousePosition.y * 10);
+        changeParameter('Q', mousePosition.y * 4);
+    });
+
+    const changeParameter = (parameter, value) => {
+        const param = device.parametersById.get(parameter);
+        param.value = value;
+    }
+}
+
 
 setup();

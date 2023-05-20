@@ -36,7 +36,7 @@ let model
 
 const material = new THREE.MeshStandardMaterial({
     color: 0xffffff,
-    metalness: 0.5,
+    metalness: 1,
     roughness: 0.5
 })
 
@@ -45,7 +45,7 @@ material.color.setHSL(0, 0, 0.2)
 const material2 = new THREE.MeshStandardMaterial({
     color: 0xffffff,
     metalness: 1,
-    roughness: 1
+    roughness: 0.5
 })
 
 material2.color.setHSL(0, 0, 0.2)
@@ -79,7 +79,10 @@ loader.load(
 document.addEventListener('keydown', (event) => {
     const keyName = event.key;
     if (keyName === 'a') {
-        model.children[0].material.color.setHSL(0.8, 1, 0.2)
+        model.children[0].material.color.setHSL(0.6, 1, 0.4)
+    }
+    if (keyName === 's') {
+        model.children[1].material.color.setHSL(0, 1, 1)
     }
 })
 
@@ -87,6 +90,9 @@ document.addEventListener('keyup', (event) => {
     const keyName = event.key;
     if (keyName === 'a') {
         model.children[0].material.color.setHSL(0, 0, 0.2)
+    }
+    if (keyName === 's') {
+        model.children[1].material.color.setHSL(0, 0, 0.2)
     }
 })
 
