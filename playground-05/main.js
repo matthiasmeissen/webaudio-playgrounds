@@ -16,15 +16,39 @@ document.body.appendChild(renderer.domElement)
 
 let model
 
+const material = new THREE.MeshStandardMaterial({
+    color: 0xffffff,
+    metalness: 0.5,
+    roughness: 0.5
+})
+
+material.color.setHSL(0, 0, 0.2)
+material.receiveShadow = true
+
+const material2 = new THREE.MeshStandardMaterial({
+    color: 0xffffff,
+    metalness: 1,
+    roughness: 1
+})
+
+material2.color.setHSL(0, 0, 0.2)
+material2.castShadow = true
+material2.receiveShadow = true
+
+
 const loader = new GLTFLoader()
 
 loader.load(
     'assets/model_01.gltf',
     function (gltf) {
         model = gltf.scene
-        scene.add(gltf.scene)
+        scene.add(model)
 
-        console.log(model)
+        model.children[0].material = material
+        model.children[1].material = material2
+        model.children[2].material = material2
+
+        model.rotation.y = -Math.PI / 2
     },
     function (xhr) {
         console.log((xhr.loaded / xhr.total * 100) + '% loaded')
@@ -35,17 +59,40 @@ loader.load(
 )
 
 
+// Keypress
+document.addEventListener('keydown', (event) => {
+    const keyName = event.key;
+    if (keyName === 'a') {
+        model.children[0].material.color.setHSL(0.8, 1, 0.2)
+    }
+})
+
+document.addEventListener('keyup', (event) => {
+    const keyName = event.key;
+    if (keyName === 'a') {
+        model.children[0].material.color.setHSL(0, 0, 0.2)
+    }
+})
+
+
 // Lights
 const pointLight = new THREE.PointLight(0xffffff, 1, 100)
 pointLight.position.set(0, 4, 0)
+pointLight.castShadow = true
 scene.add(pointLight)
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
 directionalLight.position.set(4, 4, 4)
+pointLight.castShadow = true
 scene.add(directionalLight)
 
 
-camera.position.z = 5
+// Shadow
+renderer.shadowMap.enabled = true
+
+
+// Camera
+camera.position.set(0, 2, 5)
 
 // Responsive
 window.addEventListener('resize', () => {
@@ -63,9 +110,6 @@ controls.update()
 const animate = function () {
     requestAnimationFrame(animate)
 
-    if (model) {
-        model.rotation.y += 0.01
-    }
 
     renderer.render(scene, camera)
 }
