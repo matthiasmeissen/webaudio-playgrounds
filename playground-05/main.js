@@ -12,7 +12,25 @@ renderer.setPixelRatio(window.devicePixelRatio)
 document.body.appendChild(renderer.domElement)
 
 
-// Models
+// Geometry
+const planeGroup = new THREE.Group()
+
+for (let i = 0; i < 20; i++) {
+    const plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(20, 0.2),
+        new THREE.MeshBasicMaterial()
+    )
+    plane.position.y = i * 0.5
+    planeGroup.add(plane)
+}
+
+planeGroup.position.y = -4
+planeGroup.position.z = -10
+
+scene.add(planeGroup)
+
+
+// Model
 
 let model
 
@@ -23,7 +41,6 @@ const material = new THREE.MeshStandardMaterial({
 })
 
 material.color.setHSL(0, 0, 0.2)
-material.receiveShadow = true
 
 const material2 = new THREE.MeshStandardMaterial({
     color: 0xffffff,
@@ -32,14 +49,13 @@ const material2 = new THREE.MeshStandardMaterial({
 })
 
 material2.color.setHSL(0, 0, 0.2)
-material2.castShadow = true
-material2.receiveShadow = true
+
 
 
 const loader = new GLTFLoader()
 
 loader.load(
-    'assets/model_01.gltf',
+    'assets/models/model_01.gltf',
     function (gltf) {
         model = gltf.scene
         scene.add(model)
@@ -57,24 +73,6 @@ loader.load(
         console.log('An error happened')
     }
 )
-
-// Geometry
-
-const planeGroup = new THREE.Group()
-
-for (let i = 0; i < 20; i++) {
-    const plane = new THREE.Mesh(
-        new THREE.PlaneGeometry(20, 0.2),
-        new THREE.MeshBasicMaterial()
-    )
-    plane.position.y = i * 0.5
-    planeGroup.add(plane)
-}
-
-planeGroup.position.y = -4
-planeGroup.position.z = -10
-
-scene.add(planeGroup)
 
 
 // Keypress
