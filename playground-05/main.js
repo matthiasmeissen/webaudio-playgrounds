@@ -58,6 +58,24 @@ loader.load(
     }
 )
 
+// Geometry
+
+const planeGroup = new THREE.Group()
+
+for (let i = 0; i < 20; i++) {
+    const plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(20, 0.2),
+        new THREE.MeshBasicMaterial()
+    )
+    plane.position.y = i * 0.5
+    planeGroup.add(plane)
+}
+
+planeGroup.position.y = -4
+planeGroup.position.z = -10
+
+scene.add(planeGroup)
+
 
 // Keypress
 document.addEventListener('keydown', (event) => {
