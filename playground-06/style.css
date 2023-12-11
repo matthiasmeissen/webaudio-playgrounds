@@ -5,14 +5,31 @@
 }
 
 body {
-    margin: 0;
+    margin: 32px;
     font-family: 'Inter', sans-serif;
     overflow: hidden;
 }
 
-div.midinotes {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    color: hsl(0deg, 0%, 100%);
+p {
+    width: 100%;
+    max-width: 420px;
+    line-height: 1.4;
+}
+
+.input-container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid hsl(0deg, 0%, 80%);
+    border-radius: 8px;
+    margin: 32px 0;
+}
+
+.label-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
