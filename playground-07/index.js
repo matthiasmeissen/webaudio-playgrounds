@@ -21,6 +21,7 @@
     });
 
     console.log(descriptors)
+
     // Select HTML elements
     const $buttonDsp = document.getElementById("button-dsp");
 
@@ -53,7 +54,6 @@
         }
     };
 
-    // Enable the button once the Faust node is ready
     $buttonDsp.disabled = false;
 })();
 
