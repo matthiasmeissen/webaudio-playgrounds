@@ -21,7 +21,6 @@
     });
 
     console.log(descriptors)
-
     // Select HTML elements
     const $buttonDsp = document.getElementById("button-dsp");
 
