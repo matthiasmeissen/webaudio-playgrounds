@@ -80,7 +80,6 @@ $buttonDsp.onclick = async () => {
     }
     );
 
-    
     // Create Faust node activation button
     $buttonDsp.disabled = false;
 })();
@@ -88,4 +87,3 @@ $buttonDsp.onclick = async () => {
 function mapNormalizedToRange(normalizedValue, min, max) {
     return min + normalizedValue * (max - min);
 }
-
