@@ -80,6 +80,7 @@ $buttonDsp.onclick = async () => {
     }
     );
 
+    
     // Create Faust node activation button
     $buttonDsp.disabled = false;
 })();
