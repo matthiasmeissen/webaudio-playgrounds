@@ -76,7 +76,6 @@ $buttonDsp.onclick = async () => {
     }
     );
 
-    
     document.addEventListener("click", (e) => {
         creatRandomNotes(faustNode);
     });
