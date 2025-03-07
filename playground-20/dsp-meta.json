@@ -1,0 +1,390 @@
+{
+    "name": "sound",
+    "filename": "sound.dsp",
+    "version": "2.78.3",
+    "compile_options": "-lang wasm-i -ct 1 -es 1 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 2",
+    "library_list": [
+        "/usr/share/faust/stdfaust.lib",
+        "/usr/share/faust/oscillators.lib",
+        "/usr/share/faust/basics.lib",
+        "/usr/share/faust/maths.lib",
+        "/usr/share/faust/platform.lib",
+        "/usr/share/faust/signals.lib",
+        "/usr/share/faust/envelopes.lib",
+        "/usr/share/faust/filters.lib"
+    ],
+    "include_pathnames": [
+        "/share/faust",
+        "/usr/local/share/faust",
+        "/usr/share/faust",
+        "."
+    ],
+    "size": 262496,
+    "code": "mDxgASQPHw==",
+    "inputs": 0,
+    "outputs": 1,
+    "meta": [
+        {
+            "basics.lib/listInterp:author": "Romain Michon"
+        },
+        {
+            "basics.lib/name": "Faust Basic Element Library"
+        },
+        {
+            "basics.lib/pulse_countup_loop:author": "Vince"
+        },
+        {
+            "basics.lib/version": "1.21.0"
+        },
+        {
+            "compile_options": "-lang wasm-i -ct 1 -es 1 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 2"
+        },
+        {
+            "envelopes.lib/ar:author": "Yann Orlarey, Stéphane Letz"
+        },
+        {
+            "envelopes.lib/author": "GRAME"
+        },
+        {
+            "envelopes.lib/copyright": "GRAME"
+        },
+        {
+            "envelopes.lib/license": "LGPL with exception"
+        },
+        {
+            "envelopes.lib/name": "Faust Envelope Library"
+        },
+        {
+            "envelopes.lib/version": "1.3.0"
+        },
+        {
+            "filename": "sound.dsp"
+        },
+        {
+            "filters.lib/fir:author": "Julius O. Smith III"
+        },
+        {
+            "filters.lib/fir:copyright": "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>"
+        },
+        {
+            "filters.lib/fir:license": "MIT-style STK-4.3 license"
+        },
+        {
+            "filters.lib/iir:author": "Julius O. Smith III"
+        },
+        {
+            "filters.lib/iir:copyright": "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>"
+        },
+        {
+            "filters.lib/iir:license": "MIT-style STK-4.3 license"
+        },
+        {
+            "filters.lib/lowpass0_highpass1": "MIT-style STK-4.3 license"
+        },
+        {
+            "filters.lib/name": "Faust Filters Library"
+        },
+        {
+            "filters.lib/resonlp:author": "Julius O. Smith III"
+        },
+        {
+            "filters.lib/resonlp:copyright": "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>"
+        },
+        {
+            "filters.lib/resonlp:license": "MIT-style STK-4.3 license"
+        },
+        {
+            "filters.lib/tf2:author": "Julius O. Smith III"
+        },
+        {
+            "filters.lib/tf2:copyright": "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>"
+        },
+        {
+            "filters.lib/tf2:license": "MIT-style STK-4.3 license"
+        },
+        {
+            "filters.lib/tf2s:author": "Julius O. Smith III"
+        },
+        {
+            "filters.lib/tf2s:copyright": "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>"
+        },
+        {
+            "filters.lib/tf2s:license": "MIT-style STK-4.3 license"
+        },
+        {
+            "filters.lib/version": "1.6.0"
+        },
+        {
+            "maths.lib/author": "GRAME"
+        },
+        {
+            "maths.lib/copyright": "GRAME"
+        },
+        {
+            "maths.lib/license": "LGPL with exception"
+        },
+        {
+            "maths.lib/name": "Faust Math Library"
+        },
+        {
+            "maths.lib/version": "2.8.1"
+        },
+        {
+            "name": "sound"
+        },
+        {
+            "oscillators.lib/name": "Faust Oscillator Library"
+        },
+        {
+            "oscillators.lib/version": "1.5.1"
+        },
+        {
+            "platform.lib/name": "Generic Platform Library"
+        },
+        {
+            "platform.lib/version": "1.3.0"
+        },
+        {
+            "signals.lib/name": "Faust Signal Routing Library"
+        },
+        {
+            "signals.lib/version": "1.6.0"
+        }
+    ],
+    "ui": [
+        {
+            "type": "vgroup",
+            "label": "sound",
+            "items": [
+                {
+                    "type": "vgroup",
+                    "label": "Voice 1",
+                    "items": [
+                        {
+                            "type": "hslider",
+                            "label": "BPM 1",
+                            "varname": "fHslider3",
+                            "shortname": "BPM_1",
+                            "address": "/sound/Voice_1/BPM_1",
+                            "index": 262184,
+                            "init": 120,
+                            "min": 40,
+                            "max": 200,
+                            "step": 1
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Cut 1",
+                            "varname": "fHslider0",
+                            "shortname": "Cut_1",
+                            "address": "/sound/Voice_1/Cut_1",
+                            "index": 262156,
+                            "init": 800,
+                            "min": 200,
+                            "max": 1400,
+                            "step": 1
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Gain 1",
+                            "varname": "fHslider1",
+                            "shortname": "Gain_1",
+                            "address": "/sound/Voice_1/Gain_1",
+                            "index": 262160,
+                            "init": 0.4,
+                            "min": 0,
+                            "max": 1,
+                            "step": 0.01
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Multiplier 1",
+                            "varname": "fHslider4",
+                            "shortname": "Multiplier_1",
+                            "address": "/sound/Voice_1/Multiplier_1",
+                            "index": 262188,
+                            "init": 1,
+                            "min": 0.25,
+                            "max": 4,
+                            "step": 0.25
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Note 0",
+                            "varname": "fHslider8",
+                            "shortname": "Voice_1_Note_0",
+                            "address": "/sound/Voice_1/Note_0",
+                            "index": 262260,
+                            "init": 60,
+                            "min": 0,
+                            "max": 128,
+                            "step": 1
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Note 1",
+                            "varname": "fHslider7",
+                            "shortname": "Voice_1_Note_1",
+                            "address": "/sound/Voice_1/Note_1",
+                            "index": 262248,
+                            "init": 62,
+                            "min": 0,
+                            "max": 128,
+                            "step": 1
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Note 2",
+                            "varname": "fHslider6",
+                            "shortname": "Voice_1_Note_2",
+                            "address": "/sound/Voice_1/Note_2",
+                            "index": 262236,
+                            "init": 64,
+                            "min": 0,
+                            "max": 128,
+                            "step": 1
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Note 3",
+                            "varname": "fHslider5",
+                            "shortname": "Voice_1_Note_3",
+                            "address": "/sound/Voice_1/Note_3",
+                            "index": 262220,
+                            "init": 66,
+                            "min": 0,
+                            "max": 128,
+                            "step": 1
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Shift 1",
+                            "varname": "fHslider2",
+                            "shortname": "Shift_1",
+                            "address": "/sound/Voice_1/Shift_1",
+                            "index": 262176,
+                            "init": 0.2,
+                            "min": 0,
+                            "max": 1,
+                            "step": 0.01
+                        }
+                    ]
+                },
+                {
+                    "type": "vgroup",
+                    "label": "Voice 2",
+                    "items": [
+                        {
+                            "type": "hslider",
+                            "label": "BPM 2",
+                            "varname": "fHslider12",
+                            "shortname": "BPM_2",
+                            "address": "/sound/Voice_2/BPM_2",
+                            "index": 262348,
+                            "init": 120,
+                            "min": 40,
+                            "max": 200,
+                            "step": 1
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Cut 2",
+                            "varname": "fHslider9",
+                            "shortname": "Cut_2",
+                            "address": "/sound/Voice_2/Cut_2",
+                            "index": 262336,
+                            "init": 800,
+                            "min": 200,
+                            "max": 1400,
+                            "step": 1
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Gain 2",
+                            "varname": "fHslider10",
+                            "shortname": "Gain_2",
+                            "address": "/sound/Voice_2/Gain_2",
+                            "index": 262340,
+                            "init": 0.4,
+                            "min": 0,
+                            "max": 1,
+                            "step": 0.01
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Multiplier 2",
+                            "varname": "fHslider13",
+                            "shortname": "Multiplier_2",
+                            "address": "/sound/Voice_2/Multiplier_2",
+                            "index": 262352,
+                            "init": 2,
+                            "min": 0.25,
+                            "max": 4,
+                            "step": 0.25
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Note 0",
+                            "varname": "fHslider17",
+                            "shortname": "Voice_2_Note_0",
+                            "address": "/sound/Voice_2/Note_0",
+                            "index": 262416,
+                            "init": 30,
+                            "min": 0,
+                            "max": 128,
+                            "step": 1
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Note 1",
+                            "varname": "fHslider16",
+                            "shortname": "Voice_2_Note_1",
+                            "address": "/sound/Voice_2/Note_1",
+                            "index": 262404,
+                            "init": 32,
+                            "min": 0,
+                            "max": 128,
+                            "step": 1
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Note 2",
+                            "varname": "fHslider15",
+                            "shortname": "Voice_2_Note_2",
+                            "address": "/sound/Voice_2/Note_2",
+                            "index": 262392,
+                            "init": 34,
+                            "min": 0,
+                            "max": 128,
+                            "step": 1
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Note 3",
+                            "varname": "fHslider14",
+                            "shortname": "Voice_2_Note_3",
+                            "address": "/sound/Voice_2/Note_3",
+                            "index": 262380,
+                            "init": 36,
+                            "min": 0,
+                            "max": 128,
+                            "step": 1
+                        },
+                        {
+                            "type": "hslider",
+                            "label": "Shift 2",
+                            "varname": "fHslider11",
+                            "shortname": "Shift_2",
+                            "address": "/sound/Voice_2/Shift_2",
+                            "index": 262344,
+                            "init": 0.2,
+                            "min": 0,
+                            "max": 1,
+                            "step": 0.01
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
