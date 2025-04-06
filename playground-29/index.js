@@ -89,6 +89,7 @@ document.addEventListener("keydown", (e) => {
     }
 })
 
+
 document.addEventListener("keyup", (e) => {
     if (e.key == "1") {
         faustNode.setParamValue("/sound/Rec", 0);
