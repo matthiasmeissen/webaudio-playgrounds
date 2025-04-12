@@ -86,3 +86,4 @@ document.addEventListener("mousemove", (e) => {
 function mapNormalizedToRange(normalizedValue, min, max) {
     return min + normalizedValue * (max - min);
 }
+
