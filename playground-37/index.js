@@ -83,7 +83,6 @@ document.addEventListener("mousemove", (e) => {
     faustNode.setParamValue("/sound/Multiplier_1", mul);
 });
 
-
 function mapNormalizedToRange(normalizedValue, min, max) {
     return min + normalizedValue * (max - min);
 }
